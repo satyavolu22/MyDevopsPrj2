@@ -8,7 +8,13 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'AzureFreeSubscription(83141d16-bd7c-47b0-b935-1565e697a8e6)'
+    appType: 'webAppLinux'
+    appName: 'MyDevPrj'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'TOMCAT|9.0-java11'
 steps:
 - task: Maven@3
   inputs:
